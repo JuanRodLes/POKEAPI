@@ -13,6 +13,7 @@ function pokeApi(url = "https://pokeapi.co/api/v2/pokemon") {
                     .then(dataStats => {
                         for (const LangStats of dataStats.names) {
                                         
+                            if (LangStats.language.name == "es") {
                                         let PS = (LangStats.name == "PS") ? `${LangStats.name}: ${StatsPokemon.base_stat}` : "";
                                         let AT = (LangStats.name == "Ataque") ? `${LangStats.name}: ${StatsPokemon.base_stat}` : "";
                                         let DF = (LangStats.name == "Defensa") ? `${LangStats.name}: ${StatsPokemon.base_stat}` : "";
@@ -20,10 +21,10 @@ function pokeApi(url = "https://pokeapi.co/api/v2/pokemon") {
                                         let EDF = (LangStats.name == "Defensa Especial") ? `${LangStats.name}: ${StatsPokemon.base_stat}` : "";
                                         let VEL = (LangStats.name == "Velocidad") ? `${LangStats.name}: ${StatsPokemon.base_stat}` : "";
                                         let allStats = PS+AT+DF+EAT+EDF+VEL
-                                        if (LangStats.language.name == "es") {
-
+                                        let arrayStats = [PS,AT,DF,EAT,EDF,VEL]
+                                    
                                             document.querySelector("#cartaPokemon").innerHTML += `
-                                            <div class="card bg-dark m-2" style="width: 18rem;">
+                                            <div class="card bg-dark m-2" style="width: 17rem;">
                                                 <img src="${dataPokemon2.sprites.other['official-artwork'].front_default}" class="card-img-top">
                                                     <div class="card-body d-flex justify-content-center align-items-center">
                                                         <h5 class="card-title text-white">${pokemon.name}</h5>
@@ -31,22 +32,20 @@ function pokeApi(url = "https://pokeapi.co/api/v2/pokemon") {
                                                 <table class="table table-dark border-top d-flex justify-content-around">
                                                     <tbody>
                                                         <tr>
-                                                            <td>${allStats}</td>
-                                                            <td>${allStats}</td>
+                                                            <td>${arrayStats[0]} / </td>
+                                                            <td>${arrayStats[1]}</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>${allStats}</td>
-                                                            <td>${allStats}</td>
+                                                            <td>${arrayStats[2]} / </td>
+                                                            <td>${arrayStats[3]}</td>
                                                         </tr>
                                                         <tr>
-                                                            <td>${allStats}</td>
-                                                            <td>${allStats}</td>
+                                                            <td>${arrayStats[4]} / </td>
+                                                            <td>${arrayStats[5]}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
                                             </div>`
-                                            return
-                                            debugger
                                         }//condicional//
                                     } //3er ForOf//
                                 })//3er dataStats//
@@ -54,5 +53,15 @@ function pokeApi(url = "https://pokeapi.co/api/v2/pokemon") {
                     }) //2do dataPokemon2//
             }//1er ForOf//
         })//1er dataPokemon1//
+        paginacion(dataPokemon1.previous, dataPokemon1.next)
 }//function//
+
+function paginacion( url_prev, url_next) {
+    let desacPrev = (url_prev == null) ? "disabled" : "";
+    let desacNext = (url_next == null) ? "disabled" : "";
+    document.querySelector("#btnPaginacion").innerHTML = `
+    <button class="btn btn-dark fs-2" ${desacPrev} onclick="pokeApi('${url_prev}')">Anterior</button>
+    <button class="btn btn-dark fs-2" ${desacNext} onclick="pokeApi('${url_next}')">Siguiente</button>
+    `
+}
 pokeApi()
