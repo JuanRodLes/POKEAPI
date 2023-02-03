@@ -16,9 +16,8 @@
         <div class="container-fluid">
             <a class="navbar-brand"><img src="assets/img/PokeApiLogo.png" alt=""></a>
             <form class="d-flex" role="search">
-                <input class="form-control rounded-0 rounded-start" type="search" placeholder="Buscar Pokimon"
-                    aria-label="Buscar">
-                <button class="btn bg-light rounded-0 rounded-end" type="button"><img src="assets/img/pokeball.png" style="height: 2em; width: 2em;"></button>
+                <input class="form-control rounded-0 rounded-start" type="search" placeholder="CasiPokedex" id="inputBuscar" aria-label="Buscar">
+                <button class="btn bg-light rounded-0 rounded-end" type="button" onclick="busqueda()"><img src="assets/img/pokeball.png" style="height: 2em; width: 2em;"></button>
             </form>
         </div>
     </nav>
@@ -26,9 +25,6 @@
     <div class="m-5 row" id="cartaPokemon"></div>
     <section id="btnPaginacion" class="d-flex justify-content-between align-items-center my-5"></section>
 </div>
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
