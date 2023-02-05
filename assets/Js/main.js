@@ -18,7 +18,7 @@ function pokeApi(url = "https://pokeapi.co/api/v2/pokemon") {
                                         let EAT = (LangStats.name == "Ataque Especial") ? `${LangStats.name}: ${StatsPokemon.base_stat}` : "";
                                         let EDF = (LangStats.name == "Defensa Especial") ? `${LangStats.name}: ${StatsPokemon.base_stat}` : "";
                                         let VEL = (LangStats.name == "Velocidad") ? `${LangStats.name}: ${StatsPokemon.base_stat}` : "";
-                                        if (LangStats.language.name == "es" && LangStats.name == "PS") {
+                                        if (LangStats.language.name == "es" && LangStats.name == "Velocidad") {
                                             // let allStats = [PS, AT, DF, EAT, EDF, VEL]
                                             document.querySelector("#cartaPokemon").innerHTML += `
                                             <div class="card bg-dark m-2" style="width: 17rem;">
@@ -29,13 +29,7 @@ function pokeApi(url = "https://pokeapi.co/api/v2/pokemon") {
                                                 <table class="table table-dark border-top d-flex justify-content-around">
                                                     <tbody>
                                                         <tr>
-                                                            <td>${PS} / ${PS}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>${PS} / ${PS}</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>${PS} / ${PS}</td>
+                                                            <td>${VEL}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
